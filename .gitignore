@@ -1,0 +1,5 @@
+/SimpleRegister/bin
+/SimpleRegister/obj
+/SimpleRegister/wwwroot
+/SimpleRegister/*.user
+/.vs
