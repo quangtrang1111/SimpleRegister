@@ -1,5 +1,5 @@
-// const BASE_ENDPOINT = 'https://localhost:5001'
-const BASE_ENDPOINT = 'https://simpleregister.azurewebsites.net'
+const BASE_ENDPOINT = 'https://localhost:5001'
+// const BASE_ENDPOINT = 'https://simpleregister.azurewebsites.net'
 
 const api = {
     get: async (url) => {
