@@ -1,18 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using SimpleRegister.Api.Middlewares;
+using SimpleRegister.Application;
+using SimpleRegister.Infrastructure;
 
-namespace SimpleRegister
+namespace SimpleRegister.Api
 {
     public class Startup
     {
@@ -26,11 +22,13 @@ namespace SimpleRegister
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddApplication();
+            services.AddInfrastructure(Configuration);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SimpleRegister", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SimpleRegister.Api", Version = "v1" });
             });
         }
 
@@ -41,14 +39,18 @@ namespace SimpleRegister
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SimpleRegister v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SimpleRegister.Api v1"));
             }
+
+            app.UseMiddleware<GlobalExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

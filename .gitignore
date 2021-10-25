@@ -1,5 +1,5 @@
-/SimpleRegister/bin
-/SimpleRegister/obj
-/SimpleRegister/wwwroot
-/SimpleRegister/*.user
+**/bin
+**/obj
+**/wwwroot
+**/*.user
 /.vs
