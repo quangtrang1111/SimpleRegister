@@ -32,7 +32,6 @@ namespace SimpleRegister.Api.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<ActionResult<UserModel>> GetProfile()
         {
             var query = new GetAccountProfileQuery { Username = HttpContext.User.Identity.Name };

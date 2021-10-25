@@ -38,10 +38,13 @@ namespace SimpleRegister.Infrastructure
                 .AddSignInManager<SignInManager<ApplicationUser>>();
 
             services.AddAuthentication(IdentityConstants.ApplicationScheme)
-                .AddCookie(IdentityConstants.ApplicationScheme, o => o.Events.OnRedirectToLogin = context =>
+                .AddCookie(IdentityConstants.ApplicationScheme, o =>
                 {
-                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                    return Task.CompletedTask;
+                    o.Events.OnRedirectToLogin = context =>
+                    {
+                        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                        return Task.CompletedTask;
+                    };
                 });
 
             return services;

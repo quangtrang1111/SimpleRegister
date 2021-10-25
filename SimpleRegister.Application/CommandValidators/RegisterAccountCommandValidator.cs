@@ -9,7 +9,7 @@ namespace SimpleRegister.Application.CommandValidators
         {
             RuleFor(v => v.Email).NotEmpty().EmailAddress();
             RuleFor(v => v.Password).NotEmpty().MinimumLength(6);
-            RuleFor(v => v.PhoneNumber).NotEmpty().Matches(@"^(\+?\d{1,11})$");
+            RuleFor(v => v.PhoneNumber).NotEmpty().Matches(@"^(\+?\d{1,20})$");
             RuleFor(v => v.Firstname).NotEmpty();
             RuleFor(v => v.Lastname).NotEmpty();
             RuleFor(v => v.Address).NotEmpty();

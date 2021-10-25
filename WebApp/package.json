@@ -6,8 +6,10 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "antd": "^4.16.13",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-json-view": "^1.21.3",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
@@ -16,7 +18,7 @@
     "build": "react-scripts build & npm run copy",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "copy": "copyfiles -u 1 build/**/* ../SimpleRegister/wwwroot"
+    "copy": "copyfiles -u 1 build/**/* ../SimpleRegister.Api/wwwroot"
   },
   "eslintConfig": {
     "extends": [
