@@ -8,7 +8,7 @@ namespace SimpleRegister.Application.CommandValidators
         public RegisterAccountCommandValidator()
         {
             RuleFor(v => v.Email).NotEmpty().EmailAddress();
-            RuleFor(v => v.Password).NotEmpty().MinimumLength(6);
+            RuleFor(v => v.Password).NotEmpty();
             RuleFor(v => v.PhoneNumber).NotEmpty().Matches(@"^(\+?\d{1,20})$");
             RuleFor(v => v.Firstname).NotEmpty();
             RuleFor(v => v.Lastname).NotEmpty();

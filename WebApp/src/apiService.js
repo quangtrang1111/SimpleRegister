@@ -1,4 +1,5 @@
-const BASE_ENDPOINT = 'https://localhost:5001'
+// const BASE_ENDPOINT = 'https://localhost:5001'
+const BASE_ENDPOINT = 'https://simpleregister.azurewebsites.net'
 
 const api = {
     get: async (url) => {
@@ -11,11 +12,11 @@ const api = {
         });
 
         if (response.status < 200 || response.status >= 300) {
-            throw new Error('Request failed');
+            throw new Error(response.text());
         }
 
         try {
-            return await response.json();            
+            return await response.json();
         } catch (error) {}
     },    
     post: async (url, data) => {
@@ -29,11 +30,11 @@ const api = {
         });
 
         if (response.status < 200 || response.status >= 300) {
-            throw new Error('Request failed');
+            throw new Error(response.text());
         }
 
         try {
-            return await response.json();            
+            return await response.json();
         } catch (error) {}
     }
 }

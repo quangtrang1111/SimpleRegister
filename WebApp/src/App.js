@@ -34,7 +34,7 @@ function App() {
     } catch (error) {
       Modal.confirm({
         title: 'NOT Cool',
-        content: 'Please check with our devs',
+        content: error,
         okText: 'Ok',
         cancelButtonProps: { hidden: true }
       });      
